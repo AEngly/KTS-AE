@@ -5,6 +5,6 @@ abstract public class BoardGames {
 	Board board;
 	Piece[] pieces;
 	
-	public
+
 
 }
