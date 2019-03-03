@@ -1,10 +1,10 @@
 package BoardGames;
 
-public class Display {
+public class Display { // This class takes care of displaying the board
 
-	public static void display(int[][] board) { // Method for showing board
+	public static void display(int[][] board) {
 
-		String c = ""; // top save everything
+		String c = "";
 
 		System.out.print("\n \n");
 		System.out.println("     | 0. 1. 2. 3. 4. 5. 6. 7.");
