@@ -58,7 +58,7 @@ public class Player {
 		}
 	}
 
-	public Piece[] getAllPieces(Player[] players) {
+	public static Piece[] getAllPieces(Player[] players) {
 
 		int no_pieces = 0;
 
