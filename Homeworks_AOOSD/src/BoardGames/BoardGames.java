@@ -5,6 +5,14 @@ abstract public class BoardGames {
 	Board board;
 	Piece[] pieces;
 	
+	public static void setup(Board board) {}
+	
+	public static void display(Board board) {}
+	
+	public static void turn(String[] Players) {}
+	
+	
+	
 
 
 }
