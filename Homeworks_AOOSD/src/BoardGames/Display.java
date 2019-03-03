@@ -2,7 +2,7 @@ package BoardGames;
 
 public class Display { // This class takes care of displaying the board
 
-	public static void display(int[][] board) {
+	public static void display(Piece[][] board) {
 
 		String c = "";
 

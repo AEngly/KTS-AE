@@ -1,7 +1,7 @@
 package BoardGames;
 
 abstract public class BoardGames {
-	String[] Players;
+	Player[] players;
 	Board board;
 	Piece[] pieces;
 	
@@ -9,7 +9,7 @@ abstract public class BoardGames {
 	
 	public static void display(Board board) {}
 	
-	public static void turn(String[] Players) {}
+	public static void turn(Player[] Players) {}
 	
 	
 	
