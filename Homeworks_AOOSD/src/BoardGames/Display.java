@@ -7,7 +7,7 @@ public class Display { // This class takes care of displaying the board
 		String c = "";
 
 		System.out.print("\n \n");
-		System.out.println("     | 0. 1. 2. 3. 4. 5. 6. 7.");
+		System.out.println("     | A. B. C. D. E. F. G. H.");
 		System.out.println("------------------------------");
 
 		for (int row = 0; row < board[0].length; row++) { // prints
