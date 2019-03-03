@@ -10,4 +10,5 @@ public class Piece {
 		this.owner = player_input;
 
 	}
+
 }
