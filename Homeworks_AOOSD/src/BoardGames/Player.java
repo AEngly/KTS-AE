@@ -2,17 +2,17 @@ package BoardGames;
 
 public class Player {
 
-	final String[] playercolors = new String[] { "White", "Black" };
-	protected String player; // All players have a team (black or white)
-	protected Piece[] pieces = new Piece[12]; // Each player has 12 pieces
+	final String[] playercolors = new String[] { "White", "Black" }; // A player can be black or white
+	String player; // All players have a team (black or white)
+	Piece[] pieces = new Piece[12]; // Each player has 12 pieces
 
 	// Positions of white players initially
-	char[] xchords_white = new char[] { 'A', 'C', 'E', 'G', 'B', 'D', 'F', 'H', 'A', 'C', 'E', 'G' };
-	char[] ychords_white = new char[] { '8', '8', '8', '8', '7', '7', '7', '7', '6', '6', '6', '6' };
+	final char[] xchords_white = new char[] { 'A', 'C', 'E', 'G', 'B', 'D', 'F', 'H', 'A', 'C', 'E', 'G' };
+	final char[] ychords_white = new char[] { '8', '8', '8', '8', '7', '7', '7', '7', '6', '6', '6', '6' };
 
 	// Positions of black players initially
-	char[] xchords_black = new char[] { 'B', 'D', 'F', 'H', 'A', 'C', 'E', 'G', 'B', 'D', 'F', 'H' };
-	char[] ychords_black = new char[] { '1', '1', '1', '1', '2', '2', '2', '2', '3', '3', '3', '3' };
+	final char[] xchords_black = new char[] { 'B', 'D', 'F', 'H', 'A', 'C', 'E', 'G', 'B', 'D', 'F', 'H' };
+	final char[] ychords_black = new char[] { '1', '1', '1', '1', '2', '2', '2', '2', '3', '3', '3', '3' };
 
 	// Constructor to create a player
 	public Player(String input_player) {
