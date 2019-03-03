@@ -14,13 +14,15 @@ public class Player {
 	}
 
 	public void AssignPieces() {
-		
+
 		if (this.player == "Black") {
-			
-			for (int i = 0; i < 12; )
-			
+
+			for (int i = 0; i < 12;) {
+
+			}
+
 		}
-		
+
 	}
 
 }
