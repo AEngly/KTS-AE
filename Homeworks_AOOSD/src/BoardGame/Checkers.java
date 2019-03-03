@@ -1,5 +1,9 @@
 package BoardGame;
 
+import java.util.Scanner;
+
+import BoardGames.Coordinates;
+
 public class Checkers extends BoardGame {
 	
 	public Checkers() {
@@ -9,11 +13,34 @@ public class Checkers extends BoardGame {
 		Board board = new Board(8,8);
 		final Piece[] pieces = new Piece[24];
 		setup(board, pieces, players);
+		//System.out.println("k");
+		while (playerTurn == "White" || playerTurn == "Black") {
+			display(board);
+			turn(players, playerTurn);
+		}
 	}
 	
 	public void display(Board board) {}
 	
-	public void turn(Player[] players) {}
+	public void turn(Player[] players, String playerTurn) {
+		
+		int[] nextPos = new int[2];
+		int[] move;
+		
+		do {
+			move = new Input().move;
+			nextPos[0] = move[2];
+			nextPos[1] = move[3];
+		} while (board.playarea[move[0]][move[1]].isValidMove(nextPos, playerTurn, board));
+		
+		board.playarea[move[0]][move[1]] = null;
+		board.playarea[move[2]][move[3]] = new Piece(playerTurn);
+		
+		if (Math.abs(move[0]-move[2])==2) {
+			int[] hit = {(move[2]-move[0])/2+move[0],(move[3]-move[1])/2+move[1]};
+			board.playarea[hit[0]][hit[1]]=null;
+		}
+	}
 	
 	public void setup(Board board, Piece[] pieces, Player[] players) {
 		
@@ -27,61 +54,29 @@ public class Checkers extends BoardGame {
 		
 		
 		for (int j=0; j < players.length; j++) {
+			
 			if (players[j].colour == "Black") {
 
 				for (int i = 12; i < 24; i++) {
 
-					pieces[i] = new Piece(players[j]);
+					pieces[i] = new Piece(players[j].colour);
+					board.playarea[xchords_black[i-12]][ychords_black[i-12] ] = pieces[i];
 					//System.out.println("Black"+i);
-
 				}
 			}
 
 			else if (players[j].colour == "White") {
 
 				for (int i = 0; i < 12; i++) {
-					pieces[i] = new Piece(players[j]);
+					pieces[i] = new Piece(players[j].colour);
+					board.playarea[xchords_white[i]][ychords_white[i]] = pieces[i];
 					//System.out.println("White"+i);
 				}
 			}
 
 			else {
-
 				System.out.println("The player must be given a name first!");
-
 			}
-			try {
-		
-				if (players[j].colour == "Black") {
-		
-					for (int i = 12; i < 24; i++) {
-		
-						pieces[i].pos = new int[] { xchords_black[i-12], ychords_black[i-12] };
-		
-					}
-				}
-		
-				else if (players[j].colour == "White") {
-		
-					for (int i = 0; i < 12; i++) {
-		
-						pieces[i].pos = new int[] { xchords_white[i], ychords_white[i] };
-		
-					}
-				}
-			}
-			
-			catch (Exception NullPointerException) {
-
-				System.out.println("Remember to assign pieces first. Call the method 'AssignPieces' on the player!");
-			}
-		}
-		for (int i = 0 ; i < pieces.length; i++) {
-			System.out.println(i);
-			System.out.println(pieces[i]);
-			board.playarea[pieces[i].pos[0]][pieces[i].pos[1]]=pieces[i];
-			
-			System.out.println(board.playarea[pieces[i].pos[0]][pieces[i].pos[1]]);
 		}
 	}
 
