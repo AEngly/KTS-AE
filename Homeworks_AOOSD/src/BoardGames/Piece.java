@@ -3,7 +3,7 @@ package BoardGames;
 public class Piece {
 
 	Player owner;
-	int[] position;
+	char[] position;
 
 	Piece(Player player_input) {
 
