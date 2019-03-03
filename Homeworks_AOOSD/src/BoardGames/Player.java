@@ -58,7 +58,25 @@ public class Player {
 		}
 	}
 
-	public
+	public Piece[] getAllPieces(Player[] players) {
+
+		int no_pieces = 0;
+
+		for (int i = 0; i < players.length; i++) {
+			no_pieces = no_pieces + players[i].pieces.length;
+		}
+
+		Piece[] allPieces = new Piece[no_pieces];
+
+		for (int i = 0; i < players.length; i++) {
+			for (int j = 0; j < players[i].pieces.length; j++) {
+				allPieces[j + i * players[i].pieces.length] = players[i].pieces[j];
+			}
+		}
+
+		return allPieces;
+
+	}
 
 	// Method to place player X's pieces on the board
 	public void PlacePieces() {
@@ -92,29 +110,11 @@ public class Player {
 
 	}
 
-	public void SeePieces() {
-
-		try {
-			for (int i = 0; i < this.pieces.length; i++) {
-
-				System.out.println(this.pieces[i].position);
-
-			}
-		}
-
-		catch (Exception NullPointerException) {
-			System.out.println("The player has not been given any pieces!");
-		}
-
-	}
-
 	public static void main(String[] args) {
 
 		Player newplayer2 = new Player("Black");
 		newplayer2.AssignPieces();
 		newplayer2.PlacePieces();
-
-		newplayer2.SeePieces();
 
 	}
 
