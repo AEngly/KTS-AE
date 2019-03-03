@@ -2,14 +2,12 @@ package BoardGames;
 
 public class Piece {
 
-	String owner;
+	Player owner;
 	int[] position;
 
-	Piece(String owner_input, int[] position_input) {
+	Piece(Player player_input) {
 
-		owner = owner_input;
-		position = position_input;
+		this.owner = player_input;
 
 	}
-
 }
