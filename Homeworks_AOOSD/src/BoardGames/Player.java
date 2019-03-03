@@ -58,6 +58,8 @@ public class Player {
 		}
 	}
 
+	public
+
 	// Method to place player X's pieces on the board
 	public void PlacePieces() {
 
