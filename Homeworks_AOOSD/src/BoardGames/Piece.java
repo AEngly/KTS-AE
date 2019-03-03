@@ -8,6 +8,7 @@ public class Piece {
 			p = 1;
 		}
 		else { p = 2;}
+		System.out.println("K");
 		
 	}
 
