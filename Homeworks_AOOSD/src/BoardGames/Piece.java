@@ -1,15 +1,15 @@
 package BoardGames;
 
 public class Piece {
-	
-	int p;
-	public Piece (boolean colour) {
-		if (colour == true) {
-			p = 1;
-		}
-		else { p = 2;}
-		System.out.println("K");
-		
+
+	String owner;
+	int[] position;
+
+	Piece(String owner_input, int[] position_input) {
+
+		owner = owner_input;
+		position = position_input;
+
 	}
 
 }
