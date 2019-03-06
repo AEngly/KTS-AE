@@ -1,29 +1,24 @@
 package BoardGame;
 
-public class Piece {
+public abstract class Piece {
 	
-	int[] pos = new int[2];
+	private Coord pos;
+	Player colour;
 	
-	String colour;
-	
-	public Piece(String colour) {
+	public Piece(Player colour) {
 		this.colour	= colour;
 	}
 	
-	protected boolean isValidMove(int[] move, String playerTurn, Board board) {
-		boolean m = (	this.colour == playerTurn //must be players own piece
-						&& (move[0]<=7 && move[0]>=0 && move[1]<=7 && move[1]>=0)//must land within board.
-						&& ((Math.abs(this.pos[0]-move[0])==1 && Math.abs(this.pos[1]-move[1])==(this.colour=="White"? -1:1))
-						||	(Math.abs(this.pos[0]-move[0])==2 && Math.abs(this.pos[1]-move[1])==(this.colour=="White"? -2:2)
-						&& ((board.playarea[((this.pos[0]-move[0])/2+this.pos[0])][(this.pos[1]-move[1])/2+this.pos[1]]).colour == (this.colour=="White" ? "Black":"White"))) //Checks that the piece being jumped is the opponents.	
-						));
-		return m;
+	public void setCoord(Coord k) {
+		this.pos = k;
 	}
 	
-	protected void setPosition(int[]pos) {
-		this.pos = pos;
+	public Coord getPos() {
+		return this.pos;
 	}
 	
-	
-
+	public Player getColour() {
+		return this.colour;
+	}
+	protected abstract boolean isValidMove(Coord dest, Board board, Player playerTurn); // remember to reset coord cache with setCoord
 }

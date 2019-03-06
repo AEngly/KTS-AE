@@ -2,6 +2,8 @@ package BoardGames;
 
 import java.util.Scanner;
 
+import BoardGame.Coordinates;
+
 public class Turn {
 	
 	

@@ -1,10 +1,16 @@
 package BoardGame;
 
-public class Player {
+public abstract class Player {
 	
-	String colour;
+	private String colour;
+	
 	public Player(String input) {
 		this.colour = input;
 	}
+	
+	public String getColour() {
+		return this.colour;
+	}
+	
 
 }

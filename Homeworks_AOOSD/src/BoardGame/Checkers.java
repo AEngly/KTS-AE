@@ -2,75 +2,73 @@ package BoardGame;
 
 import java.util.Scanner;
 
-import BoardGames.Coordinates;
+
+// Updates pending:
+// Change colours to Enum.
+// change Piece colour to owner
 
 public class Checkers extends BoardGame {
+
 	
-	public Checkers() {
-	
-		String playerTurn = "White";
-		Player[] players = {new Player("Black"),new Player("White")};
-		Board board = new Board(8,8);
-		final Piece[] pieces = new Piece[24];
-		setup(board, pieces, players);
-		//System.out.println("k");
-		while (playerTurn == "White" || playerTurn == "Black") {
-			display(board);
-			turn(players, playerTurn);
-		}
+	public Checkers(Board board, Player[] players) {
+		super(board, players);
 	}
 	
-	public void display(Board board) {}
+	@Override
+	public void display(getBoard()) {
+		
+	}
 	
-	public void turn(Player[] players, String playerTurn) {
-		
-		int[] nextPos = new int[2];
-		int[] move;
-		
+	public boolean isOver();
+	
+	public void turn(Player playerturn) {
+		Piece p =null;
+		Input I;
 		do {
-			move = new Input().move;
-			nextPos[0] = move[2];
-			nextPos[1] = move[3];
-		} while (board.playarea[move[0]][move[1]].isValidMove(nextPos, playerTurn, board));
+			I = new Input();
+			p = getBoard().getPiece(I.getPos());
+
+		 } while (p != null && p.isValidMove(I.getDest(), getBoard(),playerturn));
 		
-		board.playarea[move[0]][move[1]] = null;
-		board.playarea[move[2]][move[3]] = new Piece(playerTurn);
+		getBoard().setPiece(getBoard().getPiece(I.getPos()),I.getDest());
+		getBoard().setPiece(null,I.getPos());
+		getBoard().getPiece(I.getDest()).setCoord(I.getDest());
 		
-		if (Math.abs(move[0]-move[2])==2) {
-			int[] hit = {(move[2]-move[0])/2+move[0],(move[3]-move[1])/2+move[1]};
-			board.playarea[hit[0]][hit[1]]=null;
+		if (Math.abs(I.getPos().getX()-I.getDest().getX())==2) {
+			Coord hit = new Coord(((I.getPos().getX()+I.getDest().getX())/2),((I.getPos().getY()+I.getDest().getY())/2)); 
+			getBoard().setPiece(null,hit);
 		}
 	}
 	
-	public void setup(Board board, Piece[] pieces, Player[] players) {
+	public void setup(Board board, Player[] players) {
 		
 		// Positions of white players initially
-		int[] xchords_white = new int[] { 0, 2, 4, 6, 1, 3, 5, 7, 0, 2, 4, 6};
-		int[] ychords_white = new int[] { 7,7,7,7,6,6,6,6,5,5,5,5 };
+		int[] xcoords_white = new int[] { 0, 2, 4, 6, 1, 3, 5, 7, 0, 2, 4, 6};
+		int[] ycoords_white = new int[] { 7,7,7,7,6,6,6,6,5,5,5,5 };
 
 		// Positions of black players initially
-		int[] xchords_black = new int[] { 1,3,5,7,0,2,4,6,1,3,5,7 };
-		int[] ychords_black = new int[] { 0,0,0,0,1,1,1,1,2,2,2,2 };
+		int[] xcoords_black = new int[] { 1,3,5,7,0,2,4,6,1,3,5,7 };
+		int[] ycoords_black = new int[] { 0,0,0,0,1,1,1,1,2,2,2,2 };
 		
 		
 		for (int j=0; j < players.length; j++) {
 			
-			if (players[j].colour == "Black") {
+			if (players[j].getColour() == "Black") {
 
 				for (int i = 12; i < 24; i++) {
-
-					pieces[i] = new Piece(players[j].colour);
-					board.playarea[xchords_black[i-12]][ychords_black[i-12] ] = pieces[i];
-					//System.out.println("Black"+i);
+					Piece p = new CheckerPiece(players[j]);
+					p.setCoord(new Coord(xcoords_black[i],ycoords_black[i]));
+					board.setPiece(p, p.getPos());
+					
 				}
 			}
 
-			else if (players[j].colour == "White") {
+			else if (players[j].getColour() == "White") {
 
 				for (int i = 0; i < 12; i++) {
-					pieces[i] = new Piece(players[j].colour);
-					board.playarea[xchords_white[i]][ychords_white[i]] = pieces[i];
-					//System.out.println("White"+i);
+					Piece p = new CheckerPiece(players[j]);
+					p.setCoord(new Coord(xcoords_white[i],ycoords_white[i]));
+					board.setPiece(p, p.getPos());
 				}
 			}
 
@@ -79,5 +77,4 @@ public class Checkers extends BoardGame {
 			}
 		}
 	}
-
 }
