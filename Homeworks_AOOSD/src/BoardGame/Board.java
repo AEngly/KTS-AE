@@ -16,8 +16,8 @@ public abstract class Board {
 		this.playarea[dest.getX()][dest.getY()] = p;
 	}
 	
-//	public Piece[][] getPlayarea() {
-//		return this.playarea;
-//	}
+	public Piece[][] getPlayarea() {
+		return this.playarea;
+	}
 		
 }

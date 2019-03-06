@@ -1,11 +1,9 @@
 package BoardGame;
 
-import java.util.Scanner;
-
-
 // Updates pending:
 // Change colours to Enum.
 // change Piece colour to owner
+// Fix display() to show something else than the adress.
 
 public class Checkers extends BoardGame {
 
@@ -15,11 +13,41 @@ public class Checkers extends BoardGame {
 	}
 	
 	@Override
-	public void display(getBoard()) {
+	public void display() {
+		
+		//Needs fixing.
+		
+		Board board = getBoard();
+		
+		String c = ""; // top save everything
+
+		System.out.print("\n \n");
+		System.out.println("     | 0. 1. 2. 3. 4. 5. 6. 7.");
+		System.out.println("------------------------------");
+
+		for (int row = 0; row < board.getPlayarea()[0].length; row++) { // prints
+			for (int column = 0; column < board.getPlayarea()[0].length; column++) {
+
+				if (board.getPlayarea()[row][column] == null) {
+					c = c + "   ";
+				}
+
+				else {
+					c = c + board.getPlayarea()[row][column] + "  ";
+				}
+			}
+
+			System.out.println(" " + row + ".  | " + c); //print each row
+			c = ""; //reset c
+
+		}
+		System.out.println("\n\n");
 		
 	}
 	
-	public boolean isOver();
+	public boolean isOver() {
+		return false;
+	}
 	
 	public void turn(Player playerturn) {
 		Piece p =null;
@@ -55,7 +83,7 @@ public class Checkers extends BoardGame {
 			
 			if (players[j].getColour() == "Black") {
 
-				for (int i = 12; i < 24; i++) {
+				for (int i = 0; i < 12; i++) {
 					Piece p = new CheckerPiece(players[j]);
 					p.setCoord(new Coord(xcoords_black[i],ycoords_black[i]));
 					board.setPiece(p, p.getPos());

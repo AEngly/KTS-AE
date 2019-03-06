@@ -13,7 +13,7 @@ abstract public class BoardGame {
 	
 	public abstract void setup(Board board, Player[] players);
 	
-	public abstract void display(getBoard());
+	public abstract void display();
 	
 	public abstract boolean isOver();
 
@@ -23,7 +23,7 @@ abstract public class BoardGame {
 		
 		int i = 0;
 		while(!isOver()) {
-			display(board);
+			display();
 			playerTurn = players[i%players.length];
 			turn(playerTurn);
 			i++;
