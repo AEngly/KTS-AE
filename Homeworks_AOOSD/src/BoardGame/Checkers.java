@@ -14,11 +14,9 @@ public class Checkers extends BoardGame {
 	@Override
 	public void display() {
 
-		// Needs fixing.
-
 		Board board = getBoard();
 
-		String c = ""; // top save everything
+		String c = ""; // Dummy variable
 
 		System.out.print("\n \n");
 		System.out.println("     | 0. 1. 2. 3. 4. 5. 6. 7.");
