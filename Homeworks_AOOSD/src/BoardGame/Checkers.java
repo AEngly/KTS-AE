@@ -7,7 +7,7 @@ package BoardGame;
 
 public class Checkers extends BoardGame {
 
-	public Checkers(Board board, Player[] players) {
+	public Checkers(Board board, Player[] players) { // Calls the constructor of the super-class
 		super(board, players);
 	}
 
