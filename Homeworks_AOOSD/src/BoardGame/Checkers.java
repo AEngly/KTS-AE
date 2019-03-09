@@ -45,20 +45,20 @@ public class Checkers extends BoardGame {
 	public boolean isOver() {
 		return false;
 	}
-
+// Takes input, check that it forfills the rules and move the piece accordingly.
 	public void turn(Player playerturn) {
 		Piece p = null;
 		Input I;
-		do {
+		do { // Takes input and find the corresponding piece.
 			I = new Input();
 			p = getBoard().getPiece(I.getPos());
-
+// Checks if the selected move is valid
 		} while (p != null && p.isValidMove(I.getDest(), getBoard(), playerturn));
 
 		getBoard().setPiece(getBoard().getPiece(I.getPos()), I.getDest());
 		getBoard().setPiece(null, I.getPos());
 		getBoard().getPiece(I.getDest()).setCoord(I.getDest());
-
+//Removes a piece that has been jumped.
 		if (Math.abs(I.getPos().getX() - I.getDest().getX()) == 2) {
 			Coord hit = new Coord(((I.getPos().getX() + I.getDest().getX()) / 2),
 					((I.getPos().getY() + I.getDest().getY()) / 2));
