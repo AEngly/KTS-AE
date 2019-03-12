@@ -9,11 +9,11 @@ public abstract class Board {
 	}
 	
 	public Piece getPiece(Coord pos) {
-		return playarea[pos.getX()][pos.getY()];
+		return playarea[pos.getY()][pos.getX()];
 	}
 	
 	public void setPiece(Piece p, Coord dest) {
-		this.playarea[dest.getX()][dest.getY()] = p;
+		this.playarea[dest.getY()][dest.getX()]= p;
 	}
 	
 	public Piece[][] getPlayarea() {

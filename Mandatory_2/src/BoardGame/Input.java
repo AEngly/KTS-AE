@@ -14,7 +14,7 @@ public class Input {
 		int y;
 		int nx;
 		int ny;
-	
+
 		System.out.println("Turn of player " + playerturn.getColour() + "\n");
 		System.out.println("Coordinate of piece to move \n");
 		System.out.println("Enter X:");
@@ -26,7 +26,7 @@ public class Input {
 		nx = s.nextInt();
 		System.out.println("\nEnter Y:");
 		ny = s.nextInt();
-		s.close();
+
 		
 		this.pos = new Coord(x,y);
 		this.dest = new Coord(nx,ny);
