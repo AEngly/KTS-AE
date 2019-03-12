@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/Users/andreasengly/git/KTS-AE"/>
+		<item value="/Users/andreasengly/git/KTS-AE/src/BoardGame"/>
+	</list>
 	<section name="ExternalProjectImportWizard">
 	</section>
 </section>
