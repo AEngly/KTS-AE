@@ -7,7 +7,7 @@ public class Input {
 	private Coord pos;
 	private Coord dest;
 	
-	public Input() {
+	public Input(Player playerturn) {
 	
 		Scanner s = new Scanner(System.in);
 		int x;
@@ -15,7 +15,7 @@ public class Input {
 		int nx;
 		int ny;
 	
-		System.out.println("Turn of player no. 1 \n");
+		System.out.println("Turn of player " + playerturn.getColour() + "\n");
 		System.out.println("Coordinate of piece to move \n");
 		System.out.println("Enter X:");
 		x = s.nextInt();

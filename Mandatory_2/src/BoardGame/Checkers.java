@@ -50,10 +50,10 @@ public class Checkers extends BoardGame {
 		Piece p = null;
 		Input I;
 		do { // Takes input and find the corresponding piece.
-			I = new Input();
+			I = new Input(playerturn);
 			p = getBoard().getPiece(I.getPos());
 // Checks if the selected move is valid
-		} while (p != null && p.isValidMove(I.getDest(), getBoard(), playerturn));
+		} while (p == null || !p.isValidMove(I.getDest(), getBoard(), playerturn));
 
 		getBoard().setPiece(getBoard().getPiece(I.getPos()), I.getDest());
 		getBoard().setPiece(null, I.getPos());
