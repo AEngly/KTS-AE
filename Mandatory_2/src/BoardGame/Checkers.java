@@ -19,7 +19,7 @@ public class Checkers extends BoardGame {
 		String c = ""; // Dummy variable
 
 		System.out.print("\n \n");
-		System.out.println("     | 0. 1. 2. 3. 4. 5. 6. 7.");
+		System.out.println("     | 0. 1. 2. 3. 4. 5. 6. 7.  -> x-axis");
 		System.out.println("------------------------------");
 
 		for (int row = 0; row < board.getPlayarea()[0].length; row++) { // prints
@@ -50,8 +50,15 @@ public class Checkers extends BoardGame {
 		Piece p = null;
 		Input I;
 		do { // Takes input and find the corresponding piece.
-			I = new Input(playerturn);
-			p = getBoard().getPiece(I.getPos());
+			try {
+				I = new Input(playerturn);
+				p = getBoard().getPiece(I.getPos());
+			}
+			catch (Exception e) {
+				System.out.println("\nInputs must be of type integer!\n");
+				I = null;
+				p = null;
+			}
 // Checks if the selected move is valid
 		} while (p == null || !p.isValidMove(I.getDest(), getBoard(), playerturn));
 
